@@ -19,7 +19,6 @@ BChat.prototype.init = function () {
 };
 
 BChat.prototype.draw = function () {
-  console.log(`${this.fontSize}px Arial`);
   this.ctx.canvasCtx.font = `${this.fontSize}px Arial Courier New sans-serif`;
   this.ctx.canvasCtx.fillStyle = this.color;
   this.ctx.canvasCtx.fillText(this.content, this.X, this.Y);
