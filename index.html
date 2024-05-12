@@ -15,11 +15,15 @@
         <div class="video-wrapper">
             <canvas id="bChatCan"></canvas>
             <video id="bChatVideo" src="./src/video/bunny.mp4" controls></video>
+            <!-- <video id="bChatVideo" src="./src/video/soccer.mp4" controls></video> -->
         </div>
         <div class="tool-box">
             <input type="text" class="bchat-input" />
             <button class="bchat-btn">Send</button>
             <input type="color" class="color-input" />
+            <input type="range" id="speed" value="2" min="1" max="7"
+                oninput="this.nextElementSibling.value = this.value" />
+            <output>2</output>
         </div>
     </div>
 </body>

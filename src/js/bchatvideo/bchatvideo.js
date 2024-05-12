@@ -39,10 +39,6 @@ BChatVideo.prototype.render = function () {
   !this.bChatPaused && requestAnimationFrame(this.render.bind(this));
 };
 
-BChatVideo.prototype.clearRect = function () {
-  this.canvasCtx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-};
-
 BChatVideo.prototype.drawBChat = function () {
   let currentTime = this.video.currentTime;
   this.bChatPool.map((bChat) => {
@@ -59,6 +55,27 @@ BChatVideo.prototype.drawBChat = function () {
       }
     }
   });
+};
+
+BChatVideo.prototype.reset = function () {
+  this.clearRect();
+  let currentTime = this.video.currentTime;
+  this.bChatPool.map((bChat) => {
+    bChat.stopDrawing = false;
+    if (currentTime <= bChat.runTime) {
+      bChat.isInitialized = false;
+    } else {
+      bChat.stopDrawing = true;
+    }
+  });
+};
+
+BChatVideo.prototype.addBChatData = function (data) {
+  this.bChatPool.push(new BChat(data, this));
+};
+
+BChatVideo.prototype.clearRect = function () {
+  this.canvasCtx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 };
 
 export default BChatVideo;

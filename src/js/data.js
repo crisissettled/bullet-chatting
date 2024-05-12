@@ -14,7 +14,7 @@ export const bChatData = [
   {
     content: "I watched this video long long ago~~~~~~~~~~~~~~~~~~~",
     speed: 5,
-    runTime: 0,
+    runTime: 4,
     color: "orange",
   },
   {
@@ -22,5 +22,36 @@ export const bChatData = [
     speed: 3,
     runTime: 2,
     color: "blue",
+  },
+
+  {
+    content: "Cool!!!",
+    speed: 1,
+    runTime: 0,
+    color: "blue",
+  },
+  {
+    content: "I love this match",
+    speed: 5,
+    runTime: 15,
+    color: "white",
+  },
+  {
+    content: "The young player is amazing",
+    speed: 5,
+    runTime: 10,
+    color: "blue",
+  },
+  {
+    content: "what's amazing season",
+    speed: 3,
+    runTime: 18,
+    color: "green",
+  },
+  {
+    content: "I am a fun of Man City,will be Champion for sure!!!!",
+    speed: 3,
+    runTime: 22,
+    color: "green",
   },
 ];
