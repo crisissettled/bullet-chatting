@@ -8,9 +8,13 @@ const oBChatBtn = document.querySelector(".bchat-btn");
 const oBChatColorInput = document.querySelector(".color-input");
 const oBChatSpeed = document.querySelector("#speed");
 
-const init = () => {
-  window.bChatVideo = new BChatVideo(oBChatVideo, oBChatCan, { bChatData });
+const bChatVideo = new BChatVideo({
+  video: oBChatVideo,
+  canvas: oBChatCan,
+  options: { bChatData },
+});
 
+const init = () => {
   bindEvent();
 };
 
@@ -36,20 +40,20 @@ function handleVideoSeek() {
 }
 
 function handleBChatBtnClick() {
-  sendBulletChat();
+  _sendBulletChat();
 }
 
 function handleBChatInputClick(e) {
   if (e.keyCode === 13) {
-    sendBulletChat();
+    _sendBulletChat();
   }
 }
 
-function sendBulletChat() {
+function _sendBulletChat() {
   if (bChatVideo.bChatPaused === true) return;
 
   const content = oBChatInput.value.trim();
-  if (!content.length) return;
+  if (!content) return;
 
   const color = oBChatColorInput.value;
   const runTime = oBChatVideo.currentTime;

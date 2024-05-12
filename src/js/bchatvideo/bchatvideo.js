@@ -1,7 +1,7 @@
 import BChat from "./bchat";
 import { isArray, isObject } from "./utils";
 
-function BChatVideo(video, canvas, options) {
+function BChatVideo({ video, canvas, options }) {
   if (this instanceof BChatVideo == false) {
     throw new Error("please use new to create instance!");
   }
@@ -15,6 +15,7 @@ function BChatVideo(video, canvas, options) {
   this.canvas.width = video.offsetWidth;
   this.canvas.height = video.offsetHeight;
   this.bChatPaused = true;
+
   //apply options
   Object.assign(
     this,
@@ -26,12 +27,8 @@ function BChatVideo(video, canvas, options) {
     options
   );
 
-  this.bChatPool = this.createBChatPool();
+  this.bChatPool = options.bChatData.map((data) => new BChat(data, this));
 }
-
-BChatVideo.prototype.createBChatPool = function () {
-  return this.bChatData.map((data) => new BChat(data, this));
-};
 
 BChatVideo.prototype.render = function () {
   this.clearRect();
@@ -43,11 +40,6 @@ BChatVideo.prototype.drawBChat = function () {
   let currentTime = this.video.currentTime;
   this.bChatPool.map((bChat) => {
     if (!bChat.stopDrawing && currentTime >= bChat.runTime) {
-      if (!bChat.isInitialized) {
-        bChat.init();
-        bChat.isInitialized = true;
-      }
-
       bChat.X -= bChat.speed;
       bChat.draw();
       if (bChat.X <= bChat.width * -1) {
@@ -61,11 +53,9 @@ BChatVideo.prototype.reset = function () {
   this.clearRect();
   let currentTime = this.video.currentTime;
   this.bChatPool.map((bChat) => {
-    bChat.stopDrawing = false;
-    if (currentTime <= bChat.runTime) {
-      bChat.isInitialized = false;
-    } else {
-      bChat.stopDrawing = true;
+    bChat.stopDrawing = currentTime > bChat.runTime;
+    if (!bChat.stopDrawing) {
+      bChat.resetX();
     }
   });
 };

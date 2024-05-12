@@ -46,12 +46,37 @@ export const bChatData = [
     content: "what's amazing season",
     speed: 3,
     runTime: 18,
+    color: "#ddf",
+  },
+  {
+    content: "I am a fun of Man City,will be Champion for sure!!!! - @22s",
+    speed: 3,
+    runTime: 22,
+    color: "#fff",
+  },
+  {
+    content: "I am a fun of Man City,will be Champion for sure!!!! - @35s",
+    speed: 3,
+    runTime: 35,
     color: "green",
   },
   {
-    content: "I am a fun of Man City,will be Champion for sure!!!!",
+    content: "******************I am here @40s******************",
     speed: 3,
-    runTime: 22,
-    color: "green",
+    runTime: 40,
+    color: "#ade",
+  },
+
+  {
+    content: "Nice match",
+    speed: 1,
+    runTime: 42,
+    color: "#123",
+  },
+  {
+    content: "Yeaaaaaaaaaaaaaaaaaa  @46s -----",
+    speed: 3,
+    runTime: 46,
+    color: "#765",
   },
 ];

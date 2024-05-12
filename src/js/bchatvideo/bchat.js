@@ -6,16 +6,16 @@ function BChat(data, ctx) {
   this.data = data;
   this.ctx = ctx;
 
-  this.init();
-}
-
-BChat.prototype.init = function () {
   this.color = this.data.color || this.ctx.color;
   this.speed = this.data.speed || this.ctx.speed;
   this.fontSize = 30;
   this.width = getTextWidth(this.content, this.fontSize);
 
   getTextPosition(this.ctx.canvas, this.fontSize, this);
+}
+
+BChat.prototype.resetX = function () {
+  this.X = this.ctx.canvas.width;
 };
 
 BChat.prototype.draw = function () {
